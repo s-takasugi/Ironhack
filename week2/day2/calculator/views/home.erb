@@ -1,0 +1,22 @@
+<!-- views/home.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online Calculator</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <img src="img/logo.png"/>
+    <h1>Calculator</h1>
+
+    <form action="/result" method="POST">
+      <input type="number" name="first_number" placeholder="1st number">
+      <input type="number" name="second_number" placeholder="2nd number">
+      <br>
+      <button type="submit" name="operation" value="addition">Add</button>
+      <button type="submit" name="operation" value="subtraction">Subtract</button>
+      <button type="submit" name="operation" value="multiplication">Multiply</button>
+      <button type="submit" name="operation" value="division">Divide</button>
+    </form>
+  </body>
+</html>

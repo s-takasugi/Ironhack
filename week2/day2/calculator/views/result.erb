@@ -1,0 +1,19 @@
+<!-- views/result.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online Calculator</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <img src="img/logo.png"/>
+    <h1>The result is <%= @result %> !</h1>
+
+    <form action="/save" method="POST">
+      <input type="hidden" name="data" id="data" value="<%= @result %>">
+      <br>
+      <br>
+      <button type="submit" name="save">Save</button>
+    </form>
+  </body>
+</html>
