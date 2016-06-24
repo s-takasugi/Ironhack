@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'yaml/store'
 require './lib/task'
 require './lib/todolist'
+require 'pry'
 
 todo_list = TodoList.new("Soy")
 todo_list.load_tasks
@@ -34,6 +35,6 @@ end
 
 get '/deleted_task/:id' do
   id=params[:id]
-  todo_list.delete(id)
+  todo_list.delete_task(id.to_i)
   redirect to '/tasks'
 end

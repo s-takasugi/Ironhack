@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require './lib/login_service'
+require 'pry'
 
 enable(:sessions)
 
@@ -13,6 +14,7 @@ post '/login' do
     username: params[:username],
     password: params[:password]
   }
+  # binding.pry
 
   # session = {
   #   :current_user => {

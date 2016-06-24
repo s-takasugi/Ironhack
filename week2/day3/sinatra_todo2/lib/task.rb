@@ -5,7 +5,8 @@ require 'time'
 
 class Task
 	attr_reader :content, :id, :created_at, :status
-	@@current_id = 1
+	@@current_id = 5
+	# clear content of '/public/tasks.yml' to set @@current_id = 1
 	def initialize(content)
 		@content = content
 		@id = @@current_id
