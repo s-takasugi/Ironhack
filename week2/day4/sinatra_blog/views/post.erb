@@ -1,0 +1,31 @@
+<!-- views/post.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Blog</title>
+    <link rel='stylesheet' type='text/css' href='/css/style.css'>
+  </head>
+  <body>
+    <h2>Sinatra Blog</h2>
+    <h3>no code, no life!?</h3>
+      <form action='/add_post' method='POST'>
+        <input type='text' name='title' placeholder='title!' style ='width;120px; height:20px;'>
+          <br><br>
+        <input type='text' name='text' placeholder='comment here :)' style ='width:120px; height:80px;'>
+          <br><br>
+        <input type='author' name='author' placeholder='author' style ='width:120px; height:20px;'>
+          <br><br>
+        <select>
+          <option value='coding'>coding</option>
+          <option value='travel'>travel</option>
+          <option value='event'>event</option>
+          <option value='comment'>comment</option>
+          <option value='thor'>Thor!!!</option>
+        </select>
+          <br><br>
+        <button type='submit'>ADD</button>
+          <br><br>
+        <button type='reset'>CLEAR</button>
+      </form>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!-- views/home.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Blog</title>
+    <link rel='stylesheet' type='text/css' href='/css/style.css'>
+  </head>
+  <body>
+    <h1>Sinatra Blog</h1>
+    <h2>no code, no life!?</h2>
+    <form action='/form' method='POST'>
+      <button type='submit' name='create_post'>Create New Post</button>
+    </form>
+
+    <% @posts.each_with_index do |post, index| %>
+      <h4><a href=<%= '/post/#{index}' %>><%= post.title%></a><br>
+      <%= post.date %><br>
+      --------------------------------</h4>
+    <% end %>
+
+  </body>
+</html>

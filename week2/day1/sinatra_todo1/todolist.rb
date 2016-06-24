@@ -33,19 +33,3 @@ class TodoList
 		end
 	end
 end
-
-
-
-todo_list = TodoList.new("Soy")
-task = Task.new("Walk the dog")
-task2 = Task.new("Buy the milk")
-task3 = Task.new("Make my todo list into a web app")
-todo_list.save
-
-# todo_list = TodoList.new("Soy")
-# todo_list.add_task
-puts todo_list.tasks.length
-# todolist.add_task(task)
-# todolist.add_task(task2)
-#
-# p todolist.sort_by_created

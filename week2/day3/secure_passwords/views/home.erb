@@ -1,0 +1,19 @@
+<!-- views/add.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Password Checker</title>
+  </head>
+  <body>
+    <h1>Type in your email and password!</h1>
+
+    <form action="/validate" method="POST">
+      <input type="text" name="email" placeholder="email">
+      <br><br>
+      <input type="password" name="password" placeholder="password">
+
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!-- views/detail.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Blog</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <h2>Sinatra Blog</h2>
+    <h3>no code, no life!?</h3>
+        <%= @post_to_show.title %><br>
+        <%= @post_to_show.date %><br>
+        <h3><%= @post_to_show.text %></h3>
+  </body>
+</html>

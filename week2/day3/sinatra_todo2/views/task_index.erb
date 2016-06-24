@@ -1,0 +1,25 @@
+<!-- views/task_index.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra TodoList </title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <h1>Welcome to the TodoList</h1>
+
+    <ul>
+      <%@task.each do |task|%>
+      <%if task.status%>
+        <li><a href="/complete_task/<%=task.id%>"><%=task.content%> completed</a> /
+            <a href="/deleted_task/<%=task.id%>"> delete</a></li>
+            <!-- # "Walk the dog" completed/delete -->
+        <%else%>
+        <li><a href="/complete_task/<%=task.id%>"><%=task.content%> pending </a> /
+            <a href="/deleted_task/<%=task.id%>"> delete</a></li>
+        <%end%>
+      <%end%>
+    </ul>
+    <a href="/new_task">Add new task</a>
+  </body>
+</html>
