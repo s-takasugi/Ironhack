@@ -65,14 +65,14 @@ class Payroll
 
   def notify_employee
     @employees.each { |employee|
-    puts "Dear #{employee.name}, the payment is mede :)"
+    puts ">Dear #{employee.name}, your payment is made! \n  Please verify your account :)"
   }
   end
 
   def pay_employees
     weekly_pay = 0
     @employees.each { |employee| weekly_pay += employee.calculate_salary }
-  puts weekly_pay
+  puts ">The total amount spent on payroll this week is \n  $#{weekly_pay}."
   end
 end
 

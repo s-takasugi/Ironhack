@@ -8,51 +8,21 @@ class Blog
   attr_reader :posts
     def initialize
       @posts = []
-      @current_page = 1
     end
 
     def add_post(post)
       @posts.push(post)
     end
 
-    def page_number
-      if @post.length % 3 == 0
-        total_page = @post.length / 3
-      else
-        total_page = @post.length / 3 + 1
-      end
-    end
-
     def current_page
       i = 1
       @posts[]
+    end
 
     def publish_front_page
       sorted_posts = @posts.sort {|a, b| b.date <=> a.date}
-      sorted_posts[0..2].each {|post| post.print_post}
-
-      i=1
-      while i <= page_number
-        puts "#{i}"
-      end
-      puts "#{@current_page.to_s.colorize(:blue)},"
-      puts ""
-      # top_post = (@current_page) * @page_size
-      # bottom_post = (top_post + @page_size)
-      # front_page = bottom_post - top_post
-      #.take(front_page)
-      # sorted_pages.each {|post|post.print_post}
-  # sliced_posts.each {|post| post.print_post}
-      # three_posts = sorted_posts.each_slice(3)
-      # sliced_posts = sorted_pages.each_slice(3).to_a
+      sorted_posts.each {|post| post.print_post}
     end
-
-    # def publish_nex_page
-    #   nex_page = (@current_page) *
-    # end
-    # def publish_pre_page
-    #   pre_page =
-
 end
 
 class Post
@@ -64,7 +34,7 @@ class Post
     end
 
     def print_post
-      puts "\n>#{@title} [#{@date}]"
+      puts "\n>#{@title} [#{@date.to_s.colorize(:blue)}]"
       puts "#{"-" * 20}\n#{@text}"
       puts "\n#{"-" * 35}\n"
     end
@@ -89,6 +59,3 @@ blog.add_post SponsoredPost.new "Oakley", Date.new(2016, 06, 12), "Buy one Get o
 blog.add_post SponsoredPost.new "NIVEA", Date.new(2016, 06, 14), "Sunscreen for SALE!!!"
 
 blog.publish_front_page
-
-today = Date.new(2016, 06, 14)
-puts today

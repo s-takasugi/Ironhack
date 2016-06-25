@@ -10,8 +10,8 @@ class WordChain
 
 	def find_chain(initial_word, last_word)
 		if check_word(initial_word) && check_word(last_word)
-			word1_array = initial_word.chars.to_a
-			word2_array = last_word.chars.to_a
+			word1_array = initial_word.chars
+			word2_array = last_word.chars
 			alter_word(word1_array, word2_array)
 		end
 	end
@@ -32,7 +32,7 @@ class WordChain
 
 		 		if check_word(new_word)
 		 			words_array.push(new_word)
-		 			word_arr = new_word.chars.to_a
+		 			word_arr = new_word.chars
 		 			counter = 0
 		 		else
 		 			word_arr[counter] = place_holder
@@ -41,7 +41,7 @@ class WordChain
 		 	else
 		 		counter += 1
 		 	end
-		 	if word_arr.to_s != last_word_arr.to_s && (counter) == word_length
+		 	if word_arr != last_word_arr && (counter) == word_length
 		 		puts "hit"
 		 		counter = 0
 		 	end
@@ -61,3 +61,4 @@ my_chain = WordChain.new(dictionary)
 my_chain.find_chain("cat", "dog")
 my_chain.find_chain("lead", "gold")
 my_chain.find_chain("Ruby", "code")
+my_chain.find_chain("Ruby", "")
