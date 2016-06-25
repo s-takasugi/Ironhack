@@ -1,5 +1,5 @@
 require 'rspec'
-require './string_calculator_rb'
+require './string_calculator'
 
 describe 'StringCalculator' do # 'StringCalculator'is a class
 	describe '#add' do # '#add' is a method
@@ -12,6 +12,5 @@ describe 'StringCalculator' do # 'StringCalculator'is a class
 			result = StringCalculator.new.add('1,2,3')
 			expect(result).to eq(5)
 		end
-	end	
+	end
 end
-
