@@ -1,0 +1,15 @@
+<!-- app/views/product/index.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Auction Site | iBay</title>
+  </head>
+  <body>
+    <ul>
+      <% @products.each do |product| %>
+        <li><%= product.title %> - <%= product.description %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

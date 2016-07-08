@@ -1,0 +1,19 @@
+<!-- app/views/contacts/show.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address Book</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <h2>Detail contact info</h2>
+
+    <p>Name: <%= @contact.name %></p>
+    <p>Address: <%= @contact.address %></p>
+    <p>Phone Number: <%= @contact.phone %></p>
+    <p>Email: <%= @contact.email %></p>
+
+    <p><%= link_to 'Back to Index', controller: 'contacts', action: 'index' %></p>
+  </body>
+</html>

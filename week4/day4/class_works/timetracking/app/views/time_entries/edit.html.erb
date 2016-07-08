@@ -1,0 +1,27 @@
+<!-- app/views/time_entries/edit.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%= form_for [@project, @entry] do |f| %>
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+      <br>
+      <%= f.label :minutes %>
+      <%= f.text_field :minutes %>
+      <br>
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+      <br>
+      <%= f.label :comments %>
+      <%= f.text_area :comments %>
+      <br>
+
+      <%= f.submit 'Save' %>
+      <%= link_to 'cancel', project_time_entries_path(@project) %>
+    <% end %>
+  </body>
+</html>

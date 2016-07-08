@@ -1,0 +1,16 @@
+<!-- app/views/contacts/favorite.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address Book</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <h2>Favorite List</h2>
+    <ul>
+      <li><%= @contact.name %></p> </li>
+    </ul>
+
+    <p><%= link_to 'Contact List', controller: 'contacts', action: 'index' %></p>  </body>
+</html>

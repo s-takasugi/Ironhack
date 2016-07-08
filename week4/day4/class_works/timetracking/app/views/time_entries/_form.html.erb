@@ -1,0 +1,18 @@
+<!-- app/views/time_entries/_form.html.erb -->
+<!DOCTYPE html>
+
+    <%= form_for [@project, @entry] do |f| %>
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+      <br>
+      <%= f.label :minutes %>
+      <%= f.text_field :minutes %>
+      <br>
+      <%= f.label :date %>
+      <%= f.text_field :date %>
+      <br>
+
+      <%= f.submit 'Save' %>
+
+<!-- 'new' and 'edit' <%= render 'form'%>
+'_form.html.erb' =>form extracted -->

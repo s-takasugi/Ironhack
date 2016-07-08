@@ -1,0 +1,18 @@
+<!-- app/views/lipsum/new.html.erb -->
+
+<h1>Word Central</h1>
+
+<h2>Lorem Ipsum</h2>
+
+<form action='/lipsum' method='post'>
+  <div>
+    <input type='text' name='number[user_number]' id = 'lipsum_user_number' placeholder='8'><br>
+    <input type="radio" name="style" value="paragraph" checked> pragraph(s)<br>
+    <input type="radio" name="style" value="word"> word(s)<br>
+  </div>
+
+
+  <button type='submit'>Generate Lorem Ipsum</button>
+
+  <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+</form>

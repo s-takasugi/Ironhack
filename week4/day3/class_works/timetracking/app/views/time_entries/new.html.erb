@@ -1,0 +1,23 @@
+<!-- app/views/time_entries/new.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%= form_for [@project, @entry] do |f| %>
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+      <br>
+      <%= f.label :minutes %>
+      <%= f.text_field :minutes %>
+      <br>
+      <%= f.label :date %>
+      <%= f.text_field :date %>
+      <br>
+
+      <%= f.submit 'Save' %>
+      <% end %>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<!-- app/views/text_inspections/results.html.erb -->
+
+<p>The text you have entered is:</p>
+<p>"<%= @text %>"</p>
+<p>The word count for the above is <%= @word_count %>.</p>
+<p>According to blogging platform, <%= link_to 'Medium', 'https://medium.com/' %>, it takes <%= @word_per_minute %> per minute for an average adult to read the above text.</p>
+<p>The top 10 words that appear the most at the above text would be: <%=@sorted_frequency%>.</p>
+
+<p><%= link_to 'Back to Text Inspection Form', 'text_inspections/new' %></p>
+<p><%= link_to 'Back to Home', '/' %></p>
