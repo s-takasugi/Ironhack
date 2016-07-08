@@ -1,0 +1,9 @@
+#header-image {
+  background-image: url('./image.gif');
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 1024px) {
+  body:after {
+    content: "1024 and up"
+  }
+}

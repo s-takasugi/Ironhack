@@ -1,0 +1,18 @@
+.containter {
+  width: 940px;
+  margin: 0px;
+}
+
+.row {
+  margin-left: -20px;
+}
+
+[class*="span"] {
+  display: inline;
+  float: left;
+  margin-left: 20px;
+}
+
+.span-one-third {
+  width: 300px;
+}
