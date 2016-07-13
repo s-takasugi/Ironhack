@@ -1,0 +1,32 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 35vh;
+}
+.result {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ul {
+
+}
+
+li {
+
+}
+
+img {
+  width: 300px;
+}
