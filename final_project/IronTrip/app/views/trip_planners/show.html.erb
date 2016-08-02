@@ -1,0 +1,55 @@
+<div class="layer-transparent">
+  <div class="container-fluid">
+    <div class="col-sm-8">
+
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Venues</a></li>
+        <li role="presentation"><a  href="#2" aria-controls="2" role="tab" data-toggle="tab">Events</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="1" >
+          <% @venues.each do |venue| %>
+            <div class="info-tag">
+              <img class="info-img" src=<%= venue.image%> />
+              <div class="text-block">
+                <h1 class="info-first-line"><%= venue.name%></h1>
+                <h3 class="info-second-line"><%= venue.address%></h3>
+                <h4 class="info-third-line"><%= venue.category%></h4>
+              </div>
+                <!-- <%＃= check_box_tag('trip_planner[venues_ids][]', venue.id) %> -->
+              <div class="add-remove-btn">
+                <% if session[:cart]['venues'].include?(venue.id.to_s) %>
+                <%= link_to('Remove', remove_venue_trip_planners_path(venue_id: venue.id), method: :post, class: 'btn btn-danger') %>
+                <% else %>
+                <%= link_to('Add', add_venue_trip_planners_path(venue_id: venue.id), method: :post, class: 'btn btn-success') %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="2">
+          <% @events.each do |event| %>
+            <div class="info-tag">
+              <img class="info-img" src=<%= event.image%> />
+              <div class="text-block">
+                <h1 class="info-first-line"><%= event.title%></h1>
+                <h3 class="info-second-line"><%= event.location%></h3>
+                <h4 class="info-third-line"><%= event.date%></h4>
+              </div>
+              <div class="add-remove-btn">
+                <% if session[:cart]['events'].include?(event.id.to_s) %>
+                <%= link_to('Remove', remove_event_trip_planners_path(event_id: event.id), method: :post, class: 'btn btn-danger') %>
+                <% else %>
+                <%= link_to('Add', add_event_trip_planners_path(event_id: event.id), method: :post, class: 'btn btn-success') %>
+                <% end%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

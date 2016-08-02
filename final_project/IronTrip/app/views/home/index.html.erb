@@ -1,0 +1,23 @@
+<h3>Welcome to IronTrip</h3>
+
+<div class="header">
+  <h4>Enter your Destination</h4>
+  <form class="form" method="post" id="searchform">
+    <input type="text" name="query" id="query" placeholder="Example: Barcelona">
+    <input type="submit" name="submit" id="submit" value="Search">
+  </form>
+</div>
+
+<div class="venue_list"></div>
+<div class="event_list"></div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <% if user_signed_in? %>
+      <p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>
+    <% else %>
+      <p><%= link_to('Login', new_user_session_path)  %></p>
+    <% end %>
+    <p><%= link_to('Signup', new_user_registration_path) %></p>
+  </div>
+</div>

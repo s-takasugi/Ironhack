@@ -1,0 +1,6 @@
+<h1>This is the list of all venues</h1>
+<ul>
+  <% @venues.map do |venue| %>
+    <li><%= venue.id %></li>
+  <% end %>
+</ul>

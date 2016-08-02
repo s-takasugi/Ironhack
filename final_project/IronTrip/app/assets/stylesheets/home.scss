@@ -1,0 +1,72 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h1 {
+  color: #fff;
+  font-size: 14px;
+}
+
+h2 {
+  color: #fff;
+  font-size: 14px;
+}
+
+h3 {
+  color: #fff;
+  margin: 7px;
+}
+
+.header {
+  margin: 7px;
+}
+
+.big_box{
+  background: #e2e4e6;
+  border-radius: 3px;
+  color: #4d4d4d;
+  font: 14px;
+  // line-height: 18px;
+  margin: 7px;
+  min-width: 270px;
+  padding: 10px;
+}
+
+.sml_box {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 6px;
+  min-height: 20px;
+  width: 100%;
+  float: left;
+  color: #4d4d4d;
+  font: 14px;
+  // line-height: 18px;
+}
+
+.sml_box:hover {
+  background: #f9f9f9;
+}
+
+.sml_box {
+  float: left;
+  margin: 6px;
+  width: 100%
+}
+
+.venue_thumbnail {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+.event_thumbnail {
+  max-width: 128px;
+  max-height: 128px;
+}
+
+.col-sm-12 {
+  margin: 7px;
+}

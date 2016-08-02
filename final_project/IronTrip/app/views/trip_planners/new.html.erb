@@ -1,0 +1,55 @@
+<div>
+  <div class="container-fluid">
+    <div class="row" id="new-page-row">
+      <div class="col-sm-5">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#day1" aria-controls="day1" role="tab" data-toggle="tab">Day 1</a></li>
+          <li role="presentation"><a href="#day2" aria-controls="day2" role="tab" data-toggle="tab">Day 2</a></li>
+          <li role="presentation"><a href="#day3" aria-controls="day3" role="tab" data-toggle="tab">Day 3</a></li>
+          <li role="presentation"><a href="#day4" aria-controls="day4" role="tab" data-toggle="tab">Day 4</a></li>
+        </ul>
+
+        <div class="tab-content" id="droppable">
+          <%= form_for(@trip) do |f| %>
+            <div role="tabpanel" class="tab-pane active" id="day1">
+                <div class="scheduler"></div>
+                <div>
+                  <%= f.submit %>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-sm-5 checked-items">
+        <ul id="sortable">
+          <% @venues.each do |venue| %>
+            <li class="item-block" id='venue-<%=venue.id%>'>
+              <div id="remove-btn">
+                <%= link_to('Remove', remove_venue_trip_planners_path(venue_id: venue.id), method: :post, class: 'btn btn-danger') %>
+              </div>
+              <img class="info-img" src=<%= venue.image%> />
+              <div class="text-block" id="text-block">
+                <h1 class="info-first-line"><%= venue.name%></h1>
+                <h3 class="info-second-line"><%= venue.address%></h3>
+              </div>
+            </li>
+          <% end %>
+          <% @events.each do |event| %>
+            <li class="item-block">
+              <div id="remove-btn">
+                <%= link_to('Remove', remove_event_trip_planners_path(event_id: event.id), method: :post, class: 'btn btn-danger') %>
+              </div>
+              <img class="info-img" src=<%= event.image%> />
+              <div class="text-block"　id="text-block">
+                <h1 class="info-first-line"><%= event.title%></h1>
+                <h3 class="info-second-line"><%= event.location%></h3>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
