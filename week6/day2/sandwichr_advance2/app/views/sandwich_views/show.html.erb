@@ -1,0 +1,18 @@
+<h2>Sandwich Info</h2>
+
+<p>name: <%= @sandwich.name %></p>
+<p>bread type: <%= @sandwich.bread_type %></p>
+<p>calories:
+  <% calories = [] %>
+  <% @sandwich.ingredients.each do |ingredient| %>
+    <% calories.push(ingredient.calories)%>
+  <% end %>
+
+  <%= calories.reduce do |sum, calorie| sum += calorie end%>
+
+</p>
+<p>ingredients:
+  <% @sandwich.ingredients.each do |ingredient| %>
+        <li><%= ingredient.name %></li>
+      <% end %>
+</p>

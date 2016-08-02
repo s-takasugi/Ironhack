@@ -1,0 +1,9 @@
+<h2>Sandwiches</h2>
+
+<ul>
+<% @sandwiches.each do |sandwich| %>
+  <li>
+    <%= link_to sandwich.name, controller: 'sandwich_views', action: 'show', id: sandwich.id %>
+  </li>
+  <% end %>
+</ul>

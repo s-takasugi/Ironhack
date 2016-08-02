@@ -1,0 +1,16 @@
+<h3>List of Ingredients for
+  <%= Sandwich.name %>
+</h3>
+
+<ul>
+  <% @sandwich.ingredients.each do |ingredient| %>
+  <li>
+  <%= ingredient.name %>
+  <% end %>
+  </li>
+</ul>
+
+<p>Add ingredients to the sandwich...</p>
+<% @ingredients.each do |ingredient| %>
+<button class="<%=ingredient.id %>"><%= ingredient.name %></button>
+<% end %>
