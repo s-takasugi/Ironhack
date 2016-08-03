@@ -125,12 +125,12 @@ form>a:hover {
   color: #fff;
 }
 
-
 .destination-search-form h3{
+  width: 400px;
   margin: auto;
   margin-top: 10%;
   margin-bottom: 50px;
-  width: 400px;
+  color: #fff;
 }
 
 .searchbar {
@@ -277,7 +277,14 @@ ul.nav.nav-tabs {
 }
 
 .col-sm-4.new-col-3 {
-  margin-top: 51px;
+  margin-top: 27px;
+}
+
+.col-sm-4.new-col-3 h2 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 5px;
+  margin-left: 10px;
 }
 
 .scheduler {
@@ -325,14 +332,48 @@ ul.nav.nav-tabs {
 
 .checked-items.ui-sortable li.item-block.ui-sortable-handle.ui-draggable.ui-draggable-handle {
   width: 90%!important;
+  cursor: pointer;
 }
 
 .hour.ui-sortable li.item-block.ui-sortable-handle.ui-draggable.ui-draggable-handle {
-    width: 80%!important;
+  width: 80%!important;
+  cursor: pointer;
 }
 
 
 /* /trip_planners/itenarary */
+
+.itenerary-container {
+  height: 75vh;
+  width: 600px; /*remove later!!!!!!!!!!!*/
+  border: 1px solid #fff;
+}
+
+.itenarary-header {
+  height: 30px;
+  padding: 7px;
+  border-bottom: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.itenarary-header h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.itenerary-container h2 {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.itenerary-container h5 {
+  margin-left: 50px;
+  font-size: 12px;
+  color: #fff;
+}
 
 .col-sm-10.itenerary-col-2 h1:first-child {
   font-size: 24px;
@@ -341,26 +382,43 @@ ul.nav.nav-tabs {
   margin-bottom: 30px;
 }
 
-.col-sm-4.itenerary-col-3 {
-  margin-top: 51px;
+.itenerary-content-containter .nav-tabs>li {
+  width: 55px;
+  height: 28px;
 }
 
-.scheduler {
+.itenerary-content-containter .nav-tabs>li a{
+  padding: 7px 12px;
+  font-size: 9px;
+}
+
+.itenerary-content-containter {
+ margin: 0 50px;
+}
+
+.itenerary-content-containter .scheduler-container {
+  height: 100%;
+}
+
+.itenerary-content-containter.scheduler {
   margin-top: 20px;
-  border-radius: 2px;
 }
 
-#droppable {
-  height: 60vh;
+.itenerary-content-containter #droppable {
+  height: 45vh;
   border-bottom: 1px solid #fff;
   overflow-y: auto;
   /*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
-.scheduler .hour.ui-sortable {
-  border-top: 1px solid #fff;
-  height: 80px;
+.itenerary-content-containter .scheduler .hour.ui-sortable {
+  border-top: 1px dotted #fff;
+  height: 50px;
   width: 95%;
   margin: 0 auto;
   color: #fff;
+}
+
+.itenerary-content-containter ul.hour.droppable.ui-sortable.ui-droppable {
+  padding-left: 20px;
 }
