@@ -16,13 +16,14 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  /*background: url(luggage_at_beach.jpg) no-repeat center center fixed;
+  width: 100%;
+  height: 100%;
+  background: url(unsplash_travel_horizon_opacity50.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;*/
-  width: 100%;
-  height: 100%;
+  background-size: cover;
+
 }
 
 .navbar-nav li:last-child {
@@ -124,22 +125,6 @@ form>a:hover {
   color: #fff;
 }
 
-#luggage a {
-  margin: 0 10px;
-}
-
-.bag {
-  width: 50px;
-}
-
-
-/*.collapse.navbar-collapse.navbar-ex1-collapse {
-  background-color: rgba(0, 0, 0, 0.5);
-}*/
-
-
-
-
 
 .destination-search-form h3{
   margin: auto;
@@ -153,22 +138,40 @@ form>a:hover {
   margin: auto;
 }
 
+/* /trip_planners/show */
 
-
-
-.col-sm-8 {
-  /*background-color: rgba(0, 0, 0, 0.8);*/
-}
-
-.nav-tabs>li.active>a {
-  background-color: transparent;
+.col-sm-8.show-col-2 h1:first-child {
+  font-size: 24px;
   color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-.nav-tabs>li.active>a:hover {
-  color: #555;
+
+#luggage {
+  width: 50px;
+  margin-right: 15px
 }
+
+ul.nav.nav-tabs {
+  padding-top: 10px;
+}
+
+.col-sm-8.show-col-2 .tab-content {
+  height: 60vh;
+  overflow: auto;
+  border-bottom: 1px solid #fff;
+}
+
+.add-btn .btn {
+  font-size: small;
+  width: 80px;
+  height: 30px;
+}
+
 .nav-tabs>li>a {
+  border: 1px solid #fff;
+  background-color: transparent;
   color: #fff;
 }
 
@@ -177,13 +180,19 @@ form>a:hover {
   color: #555;
 }
 
-.info-tag {
-  margin: 1%;
+.nav-tabs>li.active>a:hover {
+  color: #555;
+}
+
+.item {
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
   border: 1px solid #fff;
   border-radius: 5px;
-  width: 45%;
+  width: 45.5%;
   height: 110px;
-  overflow: hidden;;
+  overflow: hidden;
   display: inline-block;
   position: relative;
 }
@@ -248,16 +257,27 @@ form>a:hover {
   position: relative;
 }
 
-/*#new-page-row {
-  border-top: 1px solid #fff;
-}*/
-
-.col-sm-5 {
-  margin-top: 20px;
+.col-sm-8.show-col-2 h2 {
+  font-size: 16px;
+  color: #fff;
+  margin-left: 20px;
 }
 
-.col-sm-5.checked-items {
-  margin-top: 60px;
+/* /trip_planners/new */
+
+.row.new-row-1 {
+  /*margin-top: 50px;*/
+}
+
+.col-sm-10.new-col-2 h1:first-child {
+  font-size: 24px;
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.col-sm-4.new-col-3 {
+  margin-top: 51px;
 }
 
 .scheduler {
@@ -265,36 +285,82 @@ form>a:hover {
   border-radius: 2px;
 }
 
-.hour {
+#droppable {
+  height: 60vh;
+  border-bottom: 1px solid #fff;
+  overflow-y: auto;
+  /*background-color: rgba(255, 255, 255, 0.3);*/
+}
+
+.scheduler .hour.ui-sortable {
   border-top: 1px solid #fff;
   height: 80px;
-  margin-bottom: 0px;
+  width: 95%;
+  margin: 0 auto;
   color: #fff;
 }
 
-.hour>.item-block {
+#sortable {
+  height: 100%;
+  max-height: 60vh;
+  min-height: 10vh;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding-left: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  overflow-y: auto;
+}
+
+.hour.ui-sortable>.item-block {
   float: right;
 }
 
-/*#search-btn {
-  position: relative;
-  right: 4px;
-}*/
+#remove-btn a.btn.btn-danger {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  top: 0;
+  margin-top: 5px;
+}
 
-li.item-block.ui-sortable-handle.ui-draggable.ui-draggable-handle {
-    width: 75%;
+.checked-items.ui-sortable li.item-block.ui-sortable-handle.ui-draggable.ui-draggable-handle {
+  width: 90%!important;
+}
+
+.hour.ui-sortable li.item-block.ui-sortable-handle.ui-draggable.ui-draggable-handle {
+    width: 80%!important;
+}
+
+
+/* /trip_planners/itenarary */
+
+.col-sm-10.itenerary-col-2 h1:first-child {
+  font-size: 24px;
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.col-sm-4.itenerary-col-3 {
+  margin-top: 51px;
+}
+
+.scheduler {
+  margin-top: 20px;
+  border-radius: 2px;
 }
 
 #droppable {
-  height: 80vh;
-  border: 2px solid #fff;
+  height: 60vh;
+  border-bottom: 1px solid #fff;
   overflow-y: auto;
-  background-color: rgba(255, 255, 255, 0.3);
+  /*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
-#sortable {
-  height: 80vh;
-  border: 2px solid #fff;
-  padding-left: 20px;
-  overflow-y: auto;
+.scheduler .hour.ui-sortable {
+  border-top: 1px solid #fff;
+  height: 80px;
+  width: 95%;
+  margin: 0 auto;
+  color: #fff;
 }

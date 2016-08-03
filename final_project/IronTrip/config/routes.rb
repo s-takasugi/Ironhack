@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
       get 'itenarary'
     end
-
   end
+
+  resources :schedules
+
   # resources :venues, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

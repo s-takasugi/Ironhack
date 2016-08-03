@@ -46,21 +46,26 @@ $(document).ready(function(){
     cursor: "pointer",
     stack: ".item-block",
   });
-
+  $( ".droppable" ).droppable({
+    drop: function( event, ui ) {
+      console.log('dragged')
+      day = this.getAttribute('data-day')
+      time = this.getAttribute('data-time')
+    }
+  });
 });
-
 
 function createScheduler() {
   var ul = $('<ul class="hour">');
   for (var i = 6; i < 25; i++) {
     var time=([i] + ':00');
-    var ul = $('<ul class="hour">').text(time);
+    var ul = $('<ul class="hour droppable" data-day=1 data-time=' + i + '>').text(time);
     $('.scheduler').append(ul);
   };
 }
 
-// function createInstances(){
-//   console.log(true)
+// function saveScheduler() {
+//   for
 // }
 
 

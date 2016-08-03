@@ -11,14 +11,15 @@ class TripPlannersController < ApplicationController
   end
 
   def create
-    
+
     date = "#{params["start_date(1i)"]}/#{params["start_date(2i)"]}/#{params["start_date(3i)"]}"
     @trip = TripPlanner.new(start_date: date)
     @venues = Venue.where(id: session[:cart]['venues'])
     @events = Event.where(id: session[:cart]['events'])
-
     @trip.venues = @venues
     @trip.events = @events
+
+    # @itenarary = Schedule.new(day: integer, time: integer)
 
     if @trip.save
       session[:cart] = ActiveSupport::HashWithIndifferentAccess.new
@@ -65,8 +66,13 @@ class TripPlannersController < ApplicationController
   def itenarary
   end
 
-  def index
+  def add_schedule
+    session[:cart][:schedule][:venues][params[:id]] = {day: params[:day], time: params[:time]}
   end
+
+  # def remove_schedule
+  #   session[:cart][:schedule]
+  # end
 
 end
 
