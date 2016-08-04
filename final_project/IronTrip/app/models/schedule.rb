@@ -1,5 +1,5 @@
 class Schedule < ApplicationRecord
-  belongs_to :trip_planners
-  belongs_to :venues
-  belongs_to :events
+  belongs_to :trip_planner
+  belongs_to :venue
+  belongs_to :event
 end

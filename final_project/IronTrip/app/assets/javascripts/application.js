@@ -34,12 +34,12 @@ $(document).ready(function(){
   });
   $('.hour').sortable({
     revert: true,
-    items: "tr:not(.item-block)"
+    items: "tr:not(.new-item)"
   });
   $('.new-item').draggable({
     connectToSortable: "#sortable, .hour",
     cursor: "pointer",
-    stack: ".item-block",
+    stack: ".new-item",
   });
   $( ".droppable" ).droppable({
     drop: function( event, ui ) {
@@ -48,17 +48,18 @@ $(document).ready(function(){
       time = this.getAttribute('data-time')
       id = ui.draggable[0].getAttribute('data-id')
       type = ui.draggable[0].getAttribute('data-type')
-      // $.ajax({
-      //   type: 'post',
-      //   url: '/trip_planners/add_schedule'
-      //   data: { 'day': day, 'time': time, 'id': id, 'type': type},
-      //   success: function(){
-      //     console.log('success!')
-      //   },
-      //   error: function(error){
-      //     console.log('error')
-      //   },
-      // })
+      $.ajax({
+        type: 'post',
+        url: '/trip_planners/add_schedule',
+        dataType: "json",
+        data: { 'day': day, 'time': time, 'id': id, 'type': type },
+        success: function(){
+          console.log('success!')
+        },
+        error: function(error){
+          console.log('error')
+        },
+      })
     }
   });
 });

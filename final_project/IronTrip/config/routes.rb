@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
       post 'add_event', to: 'trip_planners#add_event'
       post 'remove_event', to: 'trip_planners#remove_event'
+      post 'add_schedule', to: 'trip_planners#add_schedule'
 
       get 'itenarary'
     end

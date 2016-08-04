@@ -25,7 +25,8 @@
         <div role="tabpanel" class="tab-pane active" id="1" >
           <% @venues.each do |venue| %>
             <div class="show-item item">
-              <img class="show-item-img img-rounded" src=<%= venue.image%> />
+              <!--<img class="show-item-img img-rounded" id="show-img-venue" src=<%= venue.image%> />-->
+              <%= image_tag(venue.image, class: "show-item-img img-rounded") %>
               <div class="show-text-block">
                 <h2 class="show-first-line"><%= venue.name%></h2>
                 <h3 class="show-second-line"><%= venue.address%></h3>
@@ -46,7 +47,7 @@
         <div role="tabpanel" class="tab-pane" id="2">
           <% @events.each do |event| %>
             <div class="show-item item">
-              <img class="show-item-img img-rounded" src=<%= event.image%> />
+              <img class="show-item-img img-rounded id="show-img-event" src=<%= event.image%> />
               <div class="show-text-block">
                 <h2 class="show-first-line"><%= event.title%></h2>
                 <h3 class="show-second-line"><%= event.location%></h3>

@@ -15,11 +15,9 @@ class TripPlannersController < ApplicationController
 
   def create
     date = "#{params["start_date(1i)"]}/#{params["start_date(2i)"]}/#{params["start_date(3i)"]}"
-    # byebug
     @trip = TripPlanner.new(start_date: date)
     @venues = Venue.where(id: session[:cart]['venues'])
     @events = Event.where(id: session[:cart]['events'])
-
     @trip.venues = @venues
     @trip.events = @events
 
@@ -28,7 +26,7 @@ class TripPlannersController < ApplicationController
         Schedule.create(trip_planner_id: @trip.id, venue_id: key, day: value['day'], time: value['time'])
       end
       session[:cart][:schedule]['event'].each do |key, value|
-        Schedule.create(trip_planner_id: @trip.id, venue_id: key, day: value['day'], time: value['time'])
+        Schedule.create(trip_planner_id: @trip.id, event_id: key, day: value['day'], time: value['time'])
       end
       session[:cart][:schedule]['venue'] = {}
       session[:cart][:schedule]['event'] = {}
@@ -42,30 +40,40 @@ class TripPlannersController < ApplicationController
   end
 
   def show
-    # venues = RestClient.get 'https://api.foursquare.com/v2/venues/explore?near="+ $("#query").val() +"&limit=50&client_id=HKRLGM2CST1LW4BA41XANSRU5PHQH1BN3OMAHKEUDIUXGRJ5&client_secret=XJ2E1RJDNXXH3YAXRCOH30V4EO5BYLEVZZH20HMGC3NQ302K&v=20160725'
-    # json = JSON.parse(events.body)
-    # if json['events']['event'].any?
-    #   json['events']['event'].each do |venue|
-    #     e = Venue.find_or_initialize_by(api_id: venue['id'])
-    #     e.update_attributes(venue)
-    #   end
-    # end
-    events = RestClient.get 'http://api.eventful.com/json/events/search?app_key=DTvpFhpWPB3xrVQK&image_sizes=large,block200&sort_order=popularity&page_size=20&location=' + params[:city]
-    json = JSON.parse(events.body)
-    if json['events']['event'].any?
-      json['events']['event'].each do |event|
-        e = Event.find_or_initialize_by(api_id: event['id'])
-        if event['image'] != nil
-          e.update_attributes(title: event['title'], location: event['venue_name'], date: event['start_time'], image: event['image']['large']['url'], city_name: event['city_name'])
-        else
-          e.update_attributes(title: event['title'], location: event['venue_name'], date: event['start_time'], image: ('paw.png'), city_name: event['city_name'])
+    if session[:city] != params[:city]
+      session[:city] = params[:city]
+      venues = RestClient.get 'https://api.foursquare.com/v2/venues/explore?near=' + 'params[:city]' + '&limit=20&client_id=HKRLGM2CST1LW4BA41XANSRU5PHQH1BN3OMAHKEUDIUXGRJ5&client_secret=XJ2E1RJDNXXH3YAXRCOH30V4EO5BYLEVZZH20HMGC3NQ302K&v=20160804'
+      json = JSON.parse(venues.body)
+      if json['response']['groups'][0]['items'].any?
+        json['response']['groups'][0]['items'].each do |venue|
+          v = Venue.find_or_initialize_by(api_id: venue['venue']['id'])
+          v.update_attributes(name: venue['venue']['name'],
+          address: venue['venue']['location']['address'],
+          category: venue['venue']['categories'][0]['name'] ,
+          city: venue['venue']['location']['city'].downcase,
+          api_id: venue['venue']['id'],
+          image: venue['tips'].first['photourl'] || 'venue_avatar.png')
+          #image_query = JSON.parse(RestClient.get "https://api.foursquare.com/v2/venues/" + v[:api_id] + "/photos?&client_id=HKRLGM2CST1LW4BA41XANSRU5PHQH1BN3OMAHKEUDIUXGRJ5&client_secret=XJ2E1RJDNXXH3YAXRCOH30V4EO5BYLEVZZH20HMGC3NQ302K&v=20160804")
+          #image_obj = image_query['response']['photos']['items'][0]
+          #url = image_obj['prefix'] + image_obj['width'].to_s + 'x' + image_obj['height'].to_s + image_obj['suffix']
+        end
+      end
+      events = RestClient.get 'http://api.eventful.com/json/events/search?app_key=DTvpFhpWPB3xrVQK&image_sizes=large,block200&sort_order=popularity&page_size=20&location=' + params[:city]
+      json = JSON.parse(events.body)
+      if json['events']['event'].any?
+        json['events']['event'].each do |event|
+          e = Event.find_or_initialize_by(api_id: event['id'])
+          if event['image'] != nil
+            e.update_attributes(title: event['title'], location: event['venue_name'], date: event['start_time'], image: event['image']['large']['url'], city_name: event['city_name'].downcase)
+          else
+            e.update_attributes(title: event['title'], location: event['venue_name'], date: event['start_time'], image: ('http://localhost:3000/assets/event_avatar.png'), city_name: event['city_name'].downcase)
+          end
         end
       end
     end
-    @venues = Venue.all
-    # @venues = Venue.where(city: params[:city])
-    @events = Event.where(city_name: params[:city])
-    # @events = Event.where(city_name: params[:city], start_time: params[:date])
+
+    @venues = Venue.where(city: params[:city].downcase)
+    @events = Event.where(city_name: params[:city].downcase)
   end
 
   def new
@@ -92,7 +100,6 @@ class TripPlannersController < ApplicationController
   def remove_event
     session[:cart]['events'].delete(params[:evet_id])
     redirect_to :back
-    # ToDo redirect_to :back (tab: "active")?
   end
 
   def itenarary
@@ -107,7 +114,3 @@ class TripPlannersController < ApplicationController
   # end
 
 end
-
-# def
-#   @trip_planner = TripPlanner.find_by(id: params[:id])
-# end
