@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802210725) do
+ActiveRecord::Schema.define(version: 20160803230946) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20160802210725) do
     t.string   "location"
     t.string   "date"
     t.string   "image"
+    t.string   "api_id"
+    t.string   "city_name"
   end
 
   create_table "events_trip_planners", force: :cascade do |t|
@@ -29,10 +31,16 @@ ActiveRecord::Schema.define(version: 20160802210725) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "day"
     t.integer  "time"
+    t.integer  "trip_planner_id"
+    t.integer  "venue_id"
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_schedules_on_event_id"
+    t.index ["trip_planner_id"], name: "index_schedules_on_trip_planner_id"
+    t.index ["venue_id"], name: "index_schedules_on_venue_id"
   end
 
   create_table "trip_planners", force: :cascade do |t|

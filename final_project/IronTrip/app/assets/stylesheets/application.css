@@ -65,7 +65,7 @@ input#user_password {
   margin: 10px 0;
 }
 
-input.btn.btn-default {
+.action input.btn.btn-default {
   float: right;
   position: absolute;
   right: 0;
@@ -140,13 +140,22 @@ form>a:hover {
 
 /* /trip_planners/show */
 
-.col-sm-8.show-col-2 h1:first-child {
+.col-sm-10.show-col-2 {
+  height: 15vh
+}
+
+.col-sm-10.show-col-2 h1:first-child {
   font-size: 24px;
   color: #fff;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
+.plannger-btn.pull-right a.btn.btn-default {
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+}
 
 #luggage {
   width: 50px;
@@ -158,7 +167,7 @@ ul.nav.nav-tabs {
 }
 
 .col-sm-8.show-col-2 .tab-content {
-  height: 60vh;
+  height: 65vh;
   overflow: auto;
   border-bottom: 1px solid #fff;
 }
@@ -184,59 +193,61 @@ ul.nav.nav-tabs {
   color: #555;
 }
 
-.item {
+.show-item.item {
   margin-top: 2%;
   margin-left: 2%;
   margin-right: 2%;
   border: 1px solid #fff;
   border-radius: 5px;
   width: 45.5%;
-  height: 110px;
+  height: 100px;
   overflow: hidden;
   display: inline-block;
   position: relative;
 }
 
-.info-img {
+.show-item-img.img-rounded {
   user-select: none;
   -webkit-user-select: none;
-  height: 90%;
+  height: 80%;
   float: left;
-  margin:1%;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
-.text-block {
+.show-text-block {
   user-select: none;
   -webkit-user-select: none;
-  float: left;
   margin-left: 1%;
+  overflow-x: inherit;
 }
 
-.info-first-line {
+.show-text-block .show-first-line {
   user-select: none;
   -webkit-user-select: none;
-  margin: 10px 0;
+  margin: 10px 0 10px 5px;
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
+
 }
 
-.info-second-line {
+.show-text-block .show-second-line {
   user-select: none;
   -webkit-user-select: none;
-  margin: 10px 0;
-  color: #fff;
-  font-size: 14px;
-}
-
-.info-third-line {
-  user-select: none;
-  -webkit-user-select: none;
-  margin: 10px 0;
+  margin: 10px 0 10px 10px;
   color: #fff;
   font-size: 12px;
 }
 
-.btn {
+.show-text-block .show-third-line {
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 10px 0 10px 10px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.add-btn .btn {
   float: right;
   position: absolute;
   right: 0;
@@ -245,29 +256,13 @@ ul.nav.nav-tabs {
   margin-bottom: 5px;
 }
 
-.item-block {
-  margin: 5px;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  width: 75%;
-  height: 70px;
-  background-color: rgba(255, 255, 255, 0.3);
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
-}
-
-.col-sm-8.show-col-2 h2 {
-  font-size: 16px;
-  color: #fff;
-  margin-left: 20px;
-}
 
 /* /trip_planners/new */
 
 .row.new-row-1 {
-  /*margin-top: 50px;*/
+  height: 15vh;
 }
+
 
 .col-sm-10.new-col-2 h1:first-child {
   font-size: 24px;
@@ -276,15 +271,16 @@ ul.nav.nav-tabs {
   margin-bottom: 30px;
 }
 
-.col-sm-4.new-col-3 {
-  margin-top: 27px;
-}
+/*.col-sm-4.new-col-3 {
+  margin-top: 7px;
+}*/
 
 .col-sm-4.new-col-3 h2 {
   font-size: 18px;
   color: #fff;
-  margin-bottom: 5px;
-  margin-left: 10px;
+  margin: 51px 0 1px;
+  border-top: 1px solid #fff;
+  padding: 6px 0 6px 12px;
 }
 
 .scheduler {
@@ -307,9 +303,22 @@ ul.nav.nav-tabs {
   color: #fff;
 }
 
+.planner-save-btn input.btn.btn-default {
+  color: #fff;
+  background-color: transparent;;
+  border-color: #fff;
+  margin-top: 10px;
+}
+
+.itenarary-btn.pull-right a.btn.btn-default {
+  color: #fff;
+  background-color: transparent;;
+  border-color: #fff;
+}
+
 #sortable {
   height: 100%;
-  max-height: 60vh;
+  max-height: 57vh;
   min-height: 10vh;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
@@ -322,21 +331,77 @@ ul.nav.nav-tabs {
   float: right;
 }
 
+.new-item.item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2%;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  width: 90%;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+
+.new-item-img.img-rounded {
+  user-select: none;
+  -webkit-user-select: none;
+  height: 80%;
+  float: left;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.new-text-block {
+  user-select: none;
+  -webkit-user-select: none;
+  margin-left: 1%;
+  overflow-x: inherit;
+}
+
+.new-text-block .new-first-line {
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 10px 0 10px 30px;
+  color: #fff;
+  font-size: 16px;
+
+}
+
+.new-text-block .new-second-line {
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 10px 0 10px 40px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.show-text-block .show-third-line {
+  user-select: none;
+  -webkit-user-select: none;
+  margin: 10px 0 10px 10px;
+  color: #fff;
+  font-size: 12px;
+}
+
 #remove-btn a.btn.btn-danger {
   width: 20px;
   height: 20px;
-  padding: 0;
-  top: 0;
   margin-top: 5px;
+  margin-right: 5px;
+  padding: 0;
+  float: right;
 }
 
-.checked-items.ui-sortable li.item-block.ui-sortable-handle.ui-draggable.ui-draggable-handle {
-  width: 90%!important;
+.checked-items.ui-sortable li.new-item.ui-sortable-handle.ui-draggable.ui-draggable-handle {
   cursor: pointer;
+  width: 90%!important;
 }
 
-.hour.ui-sortable li.item-block.ui-sortable-handle.ui-draggable.ui-draggable-handle {
-  width: 80%!important;
+.hour.ui-sortable li.new-item.ui-sortable-handle.ui-draggable.ui-draggable-handle {
+  float: right;
   cursor: pointer;
 }
 

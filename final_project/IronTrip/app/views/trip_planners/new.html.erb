@@ -4,7 +4,6 @@
     </div>
     <div class="col-sm-10 new-col-2">
       <h1>Drag and drop your items and plan your trip ♪</h1>
-      <!-- <h2>Now let's add some items to your "luggage"!</h2> -->
     </div>
   </div>
 
@@ -28,36 +27,42 @@
             </div>
           </div>
         </div>
-        <div>
-          <%= f.submit %>
+        <div class="planner-save-btn">
+          <%= f.submit('Save', class: 'btn btn-default') %>
         </div>
       <% end %>
+      <!-- <div id="remove-btn">
+        <%= link_to('Save', new_trip_planner_path, method: :post, class: 'btn btn-default') %>
+      </div> -->
     </div>
 
     <div class="col-sm-4 new-col-3">
+      <div class="itenarary-btn pull-right">
+        <%= link_to('ITENARARY ▶︎', itenarary_trip_planners_path, class: 'btn btn-default') %>
+      </div>
       <h2>Your checked items</h2>
       <ul class="checked-items" id="sortable">
         <% @venues.each do |venue| %>
-          <li class="item-block" id='venue-<%=venue.id%>'>
+          <li class="new-item item" id='venue-<%=venue.id%>'  data-id="<%= venue.id %>" data-type='venue'>
             <div id="remove-btn">
               <%= link_to('X', remove_venue_trip_planners_path(venue_id: venue.id), method: :post, class: 'btn btn-danger') %>
             </div>
-            <img class="info-img" src=<%= venue.image%> />
-            <div class="text-block" id="text-block">
-              <h1 class="info-first-line"><%= venue.name%></h1>
-              <h3 class="info-second-line"><%= venue.address%></h3>
+            <img class="new-item-img img-rounded" src=<%= venue.image%> />
+            <div class="new-text-block" id="text-block">
+              <h1 class="new-first-line"><%= venue.name%></h1>
+              <h3 class="new-second-line"><%= venue.address%></h3>
             </div>
           </li>
         <% end %>
         <% @events.each do |event| %>
-          <li class="item-block">
+          <li class="new-item item" id='event-<%=event.id%>' data-id="<%= event.id %>" data-type='event'>
             <div id="remove-btn">
               <%= link_to('X', remove_event_trip_planners_path(event_id: event.id), method: :post, class: 'btn btn-danger') %>
             </div>
-            <img class="info-img" src=<%= event.image%> />
-            <div class="text-block"　id="text-block">
-              <h1 class="info-first-line"><%= event.title%></h1>
-              <h3 class="info-second-line"><%= event.location%></h3>
+            <img class="new-item-img img-rounded" src=<%= event.image%> />
+            <div class="new-text-block"　id="text-block">
+              <h1 class="new-first-line"><%= event.title%></h1>
+              <h3 class="new-second-line"><%= event.location%></h3>
             </div>
           </li>
         <% end %>

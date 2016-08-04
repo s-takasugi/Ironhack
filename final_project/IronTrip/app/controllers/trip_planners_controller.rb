@@ -5,23 +5,33 @@ class TripPlannersController < ApplicationController
     session[:cart] ||= ActiveSupport::HashWithIndifferentAccess.new
     session[:cart]['venues'] ||= []
     session[:cart]['events'] ||= []
+    session[:cart][:schedule] ||= {}
+    session[:cart][:schedule]['venue'] ||= {}
+    session[:cart][:schedule]['event'] ||= {}
   end
 
   def home
   end
 
   def create
-
     date = "#{params["start_date(1i)"]}/#{params["start_date(2i)"]}/#{params["start_date(3i)"]}"
+    # byebug
     @trip = TripPlanner.new(start_date: date)
     @venues = Venue.where(id: session[:cart]['venues'])
     @events = Event.where(id: session[:cart]['events'])
+
     @trip.venues = @venues
     @trip.events = @events
 
-    # @itenarary = Schedule.new(day: integer, time: integer)
-
     if @trip.save
+      session[:cart][:schedule]['venue'].each do |key, value|
+        Schedule.create(trip_planner_id: @trip.id, venue_id: key, day: value['day'], time: value['time'])
+      end
+      session[:cart][:schedule]['event'].each do |key, value|
+        Schedule.create(trip_planner_id: @trip.id, venue_id: key, day: value['day'], time: value['time'])
+      end
+      session[:cart][:schedule]['venue'] = {}
+      session[:cart][:schedule]['event'] = {}
       session[:cart] = ActiveSupport::HashWithIndifferentAccess.new
       session[:cart]['venues'] = []
       session[:cart]['events'] = []
@@ -32,8 +42,30 @@ class TripPlannersController < ApplicationController
   end
 
   def show
+    # venues = RestClient.get 'https://api.foursquare.com/v2/venues/explore?near="+ $("#query").val() +"&limit=50&client_id=HKRLGM2CST1LW4BA41XANSRU5PHQH1BN3OMAHKEUDIUXGRJ5&client_secret=XJ2E1RJDNXXH3YAXRCOH30V4EO5BYLEVZZH20HMGC3NQ302K&v=20160725'
+    # json = JSON.parse(events.body)
+    # if json['events']['event'].any?
+    #   json['events']['event'].each do |venue|
+    #     e = Venue.find_or_initialize_by(api_id: venue['id'])
+    #     e.update_attributes(venue)
+    #   end
+    # end
+    events = RestClient.get 'http://api.eventful.com/json/events/search?app_key=DTvpFhpWPB3xrVQK&image_sizes=large,block200&sort_order=popularity&page_size=20&location=' + params[:city]
+    json = JSON.parse(events.body)
+    if json['events']['event'].any?
+      json['events']['event'].each do |event|
+        e = Event.find_or_initialize_by(api_id: event['id'])
+        if event['image'] != nil
+          e.update_attributes(title: event['title'], location: event['venue_name'], date: event['start_time'], image: event['image']['large']['url'], city_name: event['city_name'])
+        else
+          e.update_attributes(title: event['title'], location: event['venue_name'], date: event['start_time'], image: ('paw.png'), city_name: event['city_name'])
+        end
+      end
+    end
     @venues = Venue.all
-    @events = Event.all
+    # @venues = Venue.where(city: params[:city])
+    @events = Event.where(city_name: params[:city])
+    # @events = Event.where(city_name: params[:city], start_time: params[:date])
   end
 
   def new
@@ -67,7 +99,7 @@ class TripPlannersController < ApplicationController
   end
 
   def add_schedule
-    session[:cart][:schedule][:venues][params[:id]] = {day: params[:day], time: params[:time]}
+    session[:cart][:schedule][params[:type]][params[:id]] = {day: params[:day], time: params[:time]}
   end
 
   # def remove_schedule

@@ -23,11 +23,6 @@ $(document).ready(function(){
   //   getEvents();
   // });
 
-
-  // $(".scheduler").on("drag", function(){
-  //   createInstances()
-  // })
-
   createScheduler();
 
   if ($('body').attr('id') == 'devise/sessions-new') {
@@ -41,7 +36,7 @@ $(document).ready(function(){
     revert: true,
     items: "tr:not(.item-block)"
   });
-  $('.item-block').draggable({
+  $('.new-item').draggable({
     connectToSortable: "#sortable, .hour",
     cursor: "pointer",
     stack: ".item-block",
@@ -51,6 +46,19 @@ $(document).ready(function(){
       console.log('dragged')
       day = this.getAttribute('data-day')
       time = this.getAttribute('data-time')
+      id = ui.draggable[0].getAttribute('data-id')
+      type = ui.draggable[0].getAttribute('data-type')
+      // $.ajax({
+      //   type: 'post',
+      //   url: '/trip_planners/add_schedule'
+      //   data: { 'day': day, 'time': time, 'id': id, 'type': type},
+      //   success: function(){
+      //     console.log('success!')
+      //   },
+      //   error: function(error){
+      //     console.log('error')
+      //   },
+      // })
     }
   });
 });
@@ -58,16 +66,11 @@ $(document).ready(function(){
 function createScheduler() {
   var ul = $('<ul class="hour">');
   for (var i = 6; i < 25; i++) {
-    var time=([i] + ':00');
+    var time = ([i] + ':00');
     var ul = $('<ul class="hour droppable" data-day=1 data-time=' + i + '>').text(time);
     $('.scheduler').append(ul);
   };
 }
-
-// function saveScheduler() {
-//   for
-// }
-
 
 // Date.prototype.yyyymmdd = function() {
 //   var mm = this.getMonth() + 1;

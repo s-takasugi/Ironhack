@@ -2,12 +2,19 @@
   <div class="row show-row-1">
     <div class="col-sm-2 show-col-1">
     </div>
+    <div class="col-sm-10 show-col-2">
+    <h1>Your search result for <%= params[:city] %></h1>
+  </div>
+  <div class="row show-row-2">
+    <div class="col-sm-2 show-col-1">
+    </div>
     <div class="col-sm-8 show-col-2">
-
-      <h1>Your search result for <%= params[:query] %></h1>
-      <div class="luggage pull-right">
-        <%= link_to(image_tag('luggage_icon.png', id: 'luggage'), new_trip_planner_path) %>
+      <div class="planner-btn pull-right">
+        <%= link_to('PLAN TRIP ▶︎', new_trip_planner_path, class: 'btn btn-default') %>
       </div>
+      <!-- <div class="luggage pull-right">
+        <%= link_to(image_tag('luggage_icon.png', id: 'luggage'), new_trip_planner_path) %>
+      </div> -->
 
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Venues</a></li>
@@ -17,12 +24,12 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="1" >
           <% @venues.each do |venue| %>
-            <div class="item venue-item">
-              <img class="info-img" src=<%= venue.image%> />
-              <div class="text-block">
-                <h1 class="info-first-line"><%= venue.name%></h1>
-                <h3 class="info-second-line"><%= venue.address%></h3>
-                <h4 class="info-third-line"><%= venue.category%></h4>
+            <div class="show-item item">
+              <img class="show-item-img img-rounded" src=<%= venue.image%> />
+              <div class="show-text-block">
+                <h2 class="show-first-line"><%= venue.name%></h2>
+                <h3 class="show-second-line"><%= venue.address%></h3>
+                <h4 class="show-third-line"><%= venue.category%></h4>
               </div>
                 <!-- <%＃= check_box_tag('trip_planner[venues_ids][]', venue.id) %> -->
               <div class="add-btn">
@@ -38,12 +45,12 @@
 
         <div role="tabpanel" class="tab-pane" id="2">
           <% @events.each do |event| %>
-            <div class="item event-item">
-              <img class="info-img" src=<%= event.image%> />
-              <div class="text-block">
-                <h1 class="info-first-line"><%= event.title%></h1>
-                <h3 class="info-second-line"><%= event.location%></h3>
-                <h4 class="info-third-line"><%= event.date%></h4>
+            <div class="show-item item">
+              <img class="show-item-img img-rounded" src=<%= event.image%> />
+              <div class="show-text-block">
+                <h2 class="show-first-line"><%= event.title%></h2>
+                <h3 class="show-second-line"><%= event.location%></h3>
+                <h4 class="show-third-line"><%= event.date[0..-10]%></h4>
               </div>
               <div class="add-btn">
                 <% if session[:cart]['events'].include?(event.id.to_s) %>
@@ -56,7 +63,6 @@
           <% end %>
         </div>
       </div>
-      <h2>Now let's add some items to your "luggage"!</h2>
     </div>
   </div>
 </div>
