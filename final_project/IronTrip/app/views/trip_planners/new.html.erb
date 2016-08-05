@@ -43,11 +43,12 @@
       <h2>Your checked items</h2>
       <ul class="checked-items" id="sortable">
         <% @venues.each do |venue| %>
-          <li class="new-item item" id='venue-<%=venue.id%>'  data-id="<%= venue.id %>" data-type='venue'>
+          <li class="new-item item" id="venue-<%=venue.id%>" data-id="<%= venue.id %>" data-type='venue'>
             <div id="remove-btn">
               <%= link_to('X', remove_venue_trip_planners_path(venue_id: venue.id), method: :post, class: 'btn btn-danger') %>
             </div>
-            <img class="new-item-img img-rounded" src=<%= venue.image%> />
+            <%= image_tag(venue.image, class: "new-item-img img-rounded") %>
+            <!-- <img class="new-item-img img-rounded" src=<%= venue.image%> /> -->
             <div class="new-text-block" id="text-block">
               <h1 class="new-first-line"><%= venue.name%></h1>
               <h3 class="new-second-line"><%= venue.address%></h3>
@@ -55,11 +56,11 @@
           </li>
         <% end %>
         <% @events.each do |event| %>
-          <li class="new-item item" id='event-<%=event.id%>' data-id="<%= event.id %>" data-type='event'>
+          <li class="new-item item" id="event-<%=event.id%>" data-id="<%= event.id %>" data-type='event'>
             <div id="remove-btn">
               <%= link_to('X', remove_event_trip_planners_path(event_id: event.id), method: :post, class: 'btn btn-danger') %>
             </div>
-            <img class="new-item-img img-rounded" src=<%= event.image%> />
+            <%= image_tag(event.image, class: "new-item-img img-rounded") %>
             <div class="new-text-block"　id="text-block">
               <h1 class="new-first-line"><%= event.title%></h1>
               <h3 class="new-second-line"><%= event.location%></h3>

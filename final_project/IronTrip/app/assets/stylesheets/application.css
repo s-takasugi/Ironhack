@@ -156,10 +156,12 @@ form>a:hover {
   color: #fff;
 }
 
+/* / */
+
 .destination-search-form h3{
-  width: 400px;
+  width: 410px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 25%;
   margin-bottom: 50px;
   color: #fff;
 }
@@ -168,6 +170,7 @@ form>a:hover {
   max-width: 400px;
   margin: auto;
 }
+
 
 /* /trip_planners/show */
 
@@ -305,10 +308,6 @@ ul.nav.nav-tabs {
   margin-bottom: 30px;
 }
 
-/*.col-sm-4.new-col-3 {
-  margin-top: 7px;
-}*/
-
 .col-sm-4.new-col-3 h2 {
   font-size: 18px;
   color: #fff;
@@ -326,7 +325,6 @@ ul.nav.nav-tabs {
   height: 60vh;
   border-bottom: 1px solid #fff;
   overflow-y: auto;
-  /*background-color: rgba(255, 255, 255, 0.3);*/
 }
 
 .scheduler .hour.ui-sortable {

@@ -25,14 +25,12 @@
         <div role="tabpanel" class="tab-pane active" id="1" >
           <% @venues.each do |venue| %>
             <div class="show-item item">
-              <!--<img class="show-item-img img-rounded" id="show-img-venue" src=<%= venue.image%> />-->
-              <%= image_tag(venue.image, class: "show-item-img img-rounded") %>
+              <%= image_tag(venue.image, class: "show-item-img img-rounded", id: "show-img-venue") %>
               <div class="show-text-block">
                 <h2 class="show-first-line"><%= venue.name%></h2>
                 <h3 class="show-second-line"><%= venue.address%></h3>
                 <h4 class="show-third-line"><%= venue.category%></h4>
               </div>
-                <!-- <%＃= check_box_tag('trip_planner[venues_ids][]', venue.id) %> -->
               <div class="add-btn">
                 <% if session[:cart]['venues'].include?(venue.id.to_s) %>
                 <%= link_to('Remove', remove_venue_trip_planners_path(venue_id: venue.id), method: :post, class: 'btn btn-danger') %>
@@ -47,7 +45,7 @@
         <div role="tabpanel" class="tab-pane" id="2">
           <% @events.each do |event| %>
             <div class="show-item item">
-              <img class="show-item-img img-rounded id="show-img-event" src=<%= event.image%> />
+              <%= image_tag(event.image, class: "show-item-img img-rounded", id: "show-img-event") %>
               <div class="show-text-block">
                 <h2 class="show-first-line"><%= event.title%></h2>
                 <h3 class="show-second-line"><%= event.location%></h3>

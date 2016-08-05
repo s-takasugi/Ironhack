@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'trip_planners#home'
-  # root to: 'home#index'
 
   resources :trip_planners do
     collection do
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
 
       post 'add_event', to: 'trip_planners#add_event'
       post 'remove_event', to: 'trip_planners#remove_event'
+
       post 'add_schedule', to: 'trip_planners#add_schedule'
 
       get 'itenarary'
@@ -18,6 +18,5 @@ Rails.application.routes.draw do
 
   resources :schedules
 
-  # resources :venues, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
